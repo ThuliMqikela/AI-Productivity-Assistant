@@ -32,6 +32,8 @@ const TOOLS = [
     icon: Mail,
     description: "Turn a short brief into a professional email with the right tone and subject line.",
     action: "Draft an email",
+    iconClass: "bg-tool-1-soft text-tool-1",
+    barClass: "bg-tool-1",
   },
   {
     to: "/meetings",
@@ -39,6 +41,8 @@ const TOOLS = [
     icon: FileText,
     description: "Convert messy notes into decisions, action items, owners and open questions.",
     action: "Summarize notes",
+    iconClass: "bg-tool-2-soft text-tool-2",
+    barClass: "bg-tool-2",
   },
   {
     to: "/tasks",
@@ -46,6 +50,8 @@ const TOOLS = [
     icon: ListChecks,
     description: "Prioritise your workload and get a realistic schedule with conflicts flagged.",
     action: "Plan my day",
+    iconClass: "bg-tool-3-soft text-tool-3",
+    barClass: "bg-tool-3",
   },
   {
     to: "/research",
@@ -53,6 +59,8 @@ const TOOLS = [
     icon: Search,
     description: "Summarise a topic or article and separate sourced facts from interpretation.",
     action: "Start research",
+    iconClass: "bg-tool-4-soft text-tool-4",
+    barClass: "bg-tool-4",
   },
   {
     to: "/chat",
@@ -60,6 +68,8 @@ const TOOLS = [
     icon: MessagesSquare,
     description: "Ask anything work-related and keep the context across the conversation.",
     action: "Open chat",
+    iconClass: "bg-tool-5-soft text-tool-5",
+    barClass: "bg-tool-5",
   },
 ] as const;
 
