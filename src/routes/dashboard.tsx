@@ -32,6 +32,8 @@ const TOOLS = [
     icon: Mail,
     description: "Turn a short brief into a professional email with the right tone and subject line.",
     action: "Draft an email",
+    iconClass: "bg-tool-1-soft text-tool-1",
+    barClass: "bg-tool-1",
   },
   {
     to: "/meetings",
@@ -39,6 +41,8 @@ const TOOLS = [
     icon: FileText,
     description: "Convert messy notes into decisions, action items, owners and open questions.",
     action: "Summarize notes",
+    iconClass: "bg-tool-2-soft text-tool-2",
+    barClass: "bg-tool-2",
   },
   {
     to: "/tasks",
@@ -46,6 +50,8 @@ const TOOLS = [
     icon: ListChecks,
     description: "Prioritise your workload and get a realistic schedule with conflicts flagged.",
     action: "Plan my day",
+    iconClass: "bg-tool-3-soft text-tool-3",
+    barClass: "bg-tool-3",
   },
   {
     to: "/research",
@@ -53,6 +59,8 @@ const TOOLS = [
     icon: Search,
     description: "Summarise a topic or article and separate sourced facts from interpretation.",
     action: "Start research",
+    iconClass: "bg-tool-4-soft text-tool-4",
+    barClass: "bg-tool-4",
   },
   {
     to: "/chat",
@@ -60,6 +68,8 @@ const TOOLS = [
     icon: MessagesSquare,
     description: "Ask anything work-related and keep the context across the conversation.",
     action: "Open chat",
+    iconClass: "bg-tool-5-soft text-tool-5",
+    barClass: "bg-tool-5",
   },
 ] as const;
 
@@ -80,7 +90,7 @@ function DashboardPage() {
   return (
     <AppShell title="Dashboard" description="Your AI workspace overview">
       <div className="mx-auto flex max-w-6xl flex-col gap-8">
-        <section className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+        <section className="relative overflow-hidden rounded-2xl border border-border bg-card bg-[image:var(--gradient-hero)] p-6 shadow-[var(--shadow-card)] md:p-8">
           <Badge variant="secondary" className="mb-3 gap-1.5">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             Five AI tools, one workspace
@@ -105,10 +115,14 @@ function DashboardPage() {
         <section>
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Productivity tools</h2>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {TOOLS.map(({ to, label, icon: Icon, description, action }) => (
-              <Card key={to} className="flex h-full flex-col shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]">
+            {TOOLS.map(({ to, label, icon: Icon, description, action, iconClass, barClass }) => (
+              <Card
+                key={to}
+                className="relative flex h-full flex-col overflow-hidden shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]"
+              >
+                <span className={`absolute inset-x-0 top-0 h-1 ${barClass}`} aria-hidden="true" />
                 <CardHeader>
-                  <span className="mb-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <span className={`mb-1 flex h-10 w-10 items-center justify-center rounded-lg ${iconClass}`}>
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <CardTitle className="text-base">{label}</CardTitle>
