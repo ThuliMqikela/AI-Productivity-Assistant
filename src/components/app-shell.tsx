@@ -19,13 +19,13 @@ import { usePreferences } from "@/lib/workspace-store";
 import { cn } from "@/lib/utils";
 
 export const NAV_ITEMS = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/email", label: "Smart Email", icon: Mail },
-  { to: "/meetings", label: "Meeting Summarizer", icon: FileText },
-  { to: "/tasks", label: "Task Planner", icon: ListChecks },
-  { to: "/research", label: "Research Assistant", icon: Search },
-  { to: "/chat", label: "AI Chat", icon: MessagesSquare },
-  { to: "/settings", label: "Settings", icon: Settings },
+  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, color: "text-primary" },
+  { to: "/email", label: "Smart Email", icon: Mail, color: "text-tool-1" },
+  { to: "/meetings", label: "Meeting Summarizer", icon: FileText, color: "text-tool-2" },
+  { to: "/tasks", label: "Task Planner", icon: ListChecks, color: "text-tool-3" },
+  { to: "/research", label: "Research Assistant", icon: Search, color: "text-tool-4" },
+  { to: "/chat", label: "AI Chat", icon: MessagesSquare, color: "text-tool-5" },
+  { to: "/settings", label: "Settings", icon: Settings, color: "text-muted-foreground" },
 ] as const;
 
 function Brand() {
