@@ -62,7 +62,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
                 : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
             )}
           >
-            <Icon className="h-4.5 w-4.5 shrink-0" aria-hidden="true" />
+            <Icon className={cn("h-4.5 w-4.5 shrink-0", color)} aria-hidden="true" />
             <span className="truncate">{label}</span>
           </Link>
         );
