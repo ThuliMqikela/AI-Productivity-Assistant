@@ -90,7 +90,7 @@ function DashboardPage() {
   return (
     <AppShell title="Dashboard" description="Your AI workspace overview">
       <div className="mx-auto flex max-w-6xl flex-col gap-8">
-        <section className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+        <section className="relative overflow-hidden rounded-2xl border border-border bg-card bg-[image:var(--gradient-hero)] p-6 shadow-[var(--shadow-card)] md:p-8">
           <Badge variant="secondary" className="mb-3 gap-1.5">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             Five AI tools, one workspace
