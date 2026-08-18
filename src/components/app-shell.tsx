@@ -47,7 +47,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <nav aria-label="Main" className="flex flex-col gap-1">
-      {NAV_ITEMS.map(({ to, label, icon: Icon }) => {
+      {NAV_ITEMS.map(({ to, label, icon: Icon, color }) => {
         const active = pathname === to;
         return (
           <Link
