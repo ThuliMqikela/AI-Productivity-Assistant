@@ -164,12 +164,13 @@ function ChatPage() {
                       variant="outline"
                       className="mt-2"
                       onClick={() => {
-                        const last = [...messages].reverse().find((m) => m.role === "user");
-                        if (last) {
-                          setMessages((prev) => prev.slice(0, prev.findLastIndex((m) => m.role === "user")));
+                        const last = messages[messages.length - 1];
+                        if (last?.role === "user") {
+                          setMessages((prev) => prev.slice(0, -1));
                           void submit(last.content);
                         }
                       }}
+
                     >
                       Try again
                     </Button>
