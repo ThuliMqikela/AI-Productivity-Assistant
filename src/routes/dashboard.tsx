@@ -115,10 +115,14 @@ function DashboardPage() {
         <section>
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Productivity tools</h2>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {TOOLS.map(({ to, label, icon: Icon, description, action }) => (
-              <Card key={to} className="flex h-full flex-col shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]">
+            {TOOLS.map(({ to, label, icon: Icon, description, action, iconClass, barClass }) => (
+              <Card
+                key={to}
+                className="relative flex h-full flex-col overflow-hidden shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]"
+              >
+                <span className={`absolute inset-x-0 top-0 h-1 ${barClass}`} aria-hidden="true" />
                 <CardHeader>
-                  <span className="mb-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <span className={`mb-1 flex h-10 w-10 items-center justify-center rounded-lg ${iconClass}`}>
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <CardTitle className="text-base">{label}</CardTitle>
