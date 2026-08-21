@@ -121,14 +121,19 @@ export function AppShell({
       </aside>
 
       <div className="lg:pl-64">
-        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-background/85 px-4 py-3 backdrop-blur md:px-8">
+        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-sidebar-border bg-sidebar/95 px-4 py-3 text-sidebar-foreground backdrop-blur md:px-8">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden" aria-label="Open navigation menu">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-sidebar-border bg-sidebar-accent/40 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground lg:hidden"
+                aria-label="Open navigation menu"
+              >
                 <Menu className="h-5 w-5" aria-hidden="true" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-72 bg-sidebar p-4">
+            <SheetContent side="left" className="w-72 border-sidebar-border bg-sidebar p-4">
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <div className="flex h-full flex-col justify-between gap-6">
                 <div className="flex flex-col gap-6">
@@ -142,20 +147,22 @@ export function AppShell({
 
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-base font-semibold md:text-lg">{title}</h1>
-            <p className="hidden truncate text-sm text-muted-foreground sm:block">{description}</p>
+            <p className="hidden truncate text-sm text-sidebar-foreground/70 sm:block">{description}</p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden text-right sm:block">
               <p className="text-sm font-medium leading-tight">{hydrated ? prefs.name : "\u00a0"}</p>
-              <p className="text-xs text-muted-foreground">Workspace member</p>
+              <p className="text-xs text-sidebar-foreground/70">Workspace member</p>
             </div>
-            <Avatar className="h-9 w-9 border border-border">
-              <AvatarFallback className="bg-accent text-xs font-semibold text-accent-foreground">
+            <Avatar className="h-9 w-9 border border-sidebar-border">
+              <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
                 {initials || "·"}
               </AvatarFallback>
             </Avatar>
           </div>
+        </header>
+
         </header>
 
         <main className="px-4 py-6 md:px-8 md:py-8">{children}</main>
