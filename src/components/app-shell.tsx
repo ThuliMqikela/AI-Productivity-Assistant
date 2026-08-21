@@ -77,15 +77,16 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
 
 function SidebarFooterNote() {
   return (
-    <div className="rounded-lg border border-border bg-muted/50 p-3 text-xs text-muted-foreground">
-      <span className="mb-1 flex items-center gap-1.5 font-semibold text-foreground">
-        <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+    <div className="rounded-lg border border-sidebar-border bg-sidebar-accent/50 p-3 text-xs text-sidebar-foreground/75">
+      <span className="mb-1 flex items-center gap-1.5 font-semibold text-sidebar-foreground">
+        <ShieldCheck className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
         Responsible AI
       </span>
       Outputs are drafts. Always review before sending or acting on them.
     </div>
   );
 }
+
 
 export function AppShell({
   title,
