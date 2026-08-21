@@ -35,8 +35,8 @@ function Brand() {
         <Sparkles className="h-5 w-5" aria-hidden="true" />
       </span>
       <span className="leading-tight">
-        <span className="block text-sm font-bold">Workplace AI</span>
-        <span className="block text-xs text-muted-foreground">Productivity Assistant</span>
+        <span className="block text-sm font-bold text-sidebar-foreground">Workplace AI</span>
+        <span className="block text-xs text-sidebar-foreground/65">Productivity Assistant</span>
       </span>
     </Link>
   );
@@ -47,7 +47,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <nav aria-label="Main" className="flex flex-col gap-1">
-      {NAV_ITEMS.map(({ to, label, icon: Icon, color }) => {
+      {NAV_ITEMS.map(({ to, label, icon: Icon }) => {
         const active = pathname === to;
         return (
           <Link
@@ -59,10 +59,13 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               active
                 ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-[inset_2px_0_0_0_var(--color-primary)]"
-                : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
+                : "text-sidebar-foreground/75 hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
             )}
           >
-            <Icon className={cn("h-4.5 w-4.5 shrink-0", color)} aria-hidden="true" />
+            <Icon
+              className={cn("h-4.5 w-4.5 shrink-0", active ? "text-primary" : "text-sidebar-foreground/70")}
+              aria-hidden="true"
+            />
             <span className="truncate">{label}</span>
           </Link>
         );
@@ -70,6 +73,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
     </nav>
   );
 }
+
 
 function SidebarFooterNote() {
   return (
