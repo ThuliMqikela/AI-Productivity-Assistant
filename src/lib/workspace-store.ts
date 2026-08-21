@@ -20,7 +20,7 @@ export type Preferences = {
 };
 
 export const DEFAULT_PREFERENCES: Preferences = {
-  name: "Alex Morgan",
+  name: "Tulisile Mqikela",
   defaultTone: "Formal",
   outputLength: "Balanced",
   showDemoData: true,
