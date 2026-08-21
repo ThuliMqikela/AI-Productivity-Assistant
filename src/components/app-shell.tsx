@@ -35,8 +35,8 @@ function Brand() {
         <Sparkles className="h-5 w-5" aria-hidden="true" />
       </span>
       <span className="leading-tight">
-        <span className="block text-sm font-bold">Workplace AI</span>
-        <span className="block text-xs text-muted-foreground">Productivity Assistant</span>
+        <span className="block text-sm font-bold text-sidebar-foreground">Workplace AI</span>
+        <span className="block text-xs text-sidebar-foreground/65">Productivity Assistant</span>
       </span>
     </Link>
   );
@@ -47,7 +47,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <nav aria-label="Main" className="flex flex-col gap-1">
-      {NAV_ITEMS.map(({ to, label, icon: Icon, color }) => {
+      {NAV_ITEMS.map(({ to, label, icon: Icon }) => {
         const active = pathname === to;
         return (
           <Link
@@ -59,10 +59,13 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               active
                 ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-[inset_2px_0_0_0_var(--color-primary)]"
-                : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
+                : "text-sidebar-foreground/75 hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
             )}
           >
-            <Icon className={cn("h-4.5 w-4.5 shrink-0", color)} aria-hidden="true" />
+            <Icon
+              className={cn("h-4.5 w-4.5 shrink-0", active ? "text-primary" : "text-sidebar-foreground/70")}
+              aria-hidden="true"
+            />
             <span className="truncate">{label}</span>
           </Link>
         );
@@ -71,17 +74,19 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
+
 function SidebarFooterNote() {
   return (
-    <div className="rounded-lg border border-border bg-muted/50 p-3 text-xs text-muted-foreground">
-      <span className="mb-1 flex items-center gap-1.5 font-semibold text-foreground">
-        <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+    <div className="rounded-lg border border-sidebar-border bg-sidebar-accent/50 p-3 text-xs text-sidebar-foreground/75">
+      <span className="mb-1 flex items-center gap-1.5 font-semibold text-sidebar-foreground">
+        <ShieldCheck className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
         Responsible AI
       </span>
       Outputs are drafts. Always review before sending or acting on them.
     </div>
   );
 }
+
 
 export function AppShell({
   title,
@@ -116,14 +121,19 @@ export function AppShell({
       </aside>
 
       <div className="lg:pl-64">
-        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-background/85 px-4 py-3 backdrop-blur md:px-8">
+        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-sidebar-border bg-sidebar/95 px-4 py-3 text-sidebar-foreground backdrop-blur md:px-8">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden" aria-label="Open navigation menu">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-sidebar-border bg-sidebar-accent/40 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground lg:hidden"
+                aria-label="Open navigation menu"
+              >
                 <Menu className="h-5 w-5" aria-hidden="true" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-72 bg-sidebar p-4">
+            <SheetContent side="left" className="w-72 border-sidebar-border bg-sidebar p-4">
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <div className="flex h-full flex-col justify-between gap-6">
                 <div className="flex flex-col gap-6">
@@ -137,21 +147,23 @@ export function AppShell({
 
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-base font-semibold md:text-lg">{title}</h1>
-            <p className="hidden truncate text-sm text-muted-foreground sm:block">{description}</p>
+            <p className="hidden truncate text-sm text-sidebar-foreground/70 sm:block">{description}</p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden text-right sm:block">
               <p className="text-sm font-medium leading-tight">{hydrated ? prefs.name : "\u00a0"}</p>
-              <p className="text-xs text-muted-foreground">Workspace member</p>
+              <p className="text-xs text-sidebar-foreground/70">Workspace member</p>
             </div>
-            <Avatar className="h-9 w-9 border border-border">
-              <AvatarFallback className="bg-accent text-xs font-semibold text-accent-foreground">
+            <Avatar className="h-9 w-9 border border-sidebar-border">
+              <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
                 {initials || "·"}
               </AvatarFallback>
             </Avatar>
           </div>
         </header>
+
+
 
         <main className="px-4 py-6 md:px-8 md:py-8">{children}</main>
 
